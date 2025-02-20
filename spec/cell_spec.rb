@@ -3,6 +3,7 @@ require './lib/cell'
 RSpec.describe Cell do
   before(:each) do
     @cell = Cell.new("B4")
+    @cruiser = Ship.new("Cruiser", 3)
   end
   describe "@initialize"do
     it "exists" do
@@ -11,6 +12,20 @@ RSpec.describe Cell do
     it "has a coordinate" do
       expect(@cell.coordinate).to eq("B4")
     end
+    it "has a ship" do
+      expect(@cell.ship).to eq(nil)
+    end
+    it "has an empty value" do
+      expect(@cell.empty).to eq(true)
+    end
   end
+
+  describe "#place_ship" do
+    it "adds ship" do
+      @cell.place_ship(@cruiser)
+      expect(@cell.ship).to eq(@ship)
+    end
+  end
+  
   
 end

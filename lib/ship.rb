@@ -14,4 +14,8 @@ class Ship
     @length -= 1
   end
 
+  def sunk?
+    @length == 0
+  end
+
 end

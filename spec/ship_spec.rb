@@ -19,19 +19,24 @@ RSpec.describe Ship do
       
     expect(@cruiser.length).to eq(3)
     end
-
+  end
   describe '#health' do  
       it 'it has health' do
         
+      expect(@cruiser.health).to eq(3)
+   end  
+  end
+
+  describe '#hit' do
+      it 'it has hit' do
       expect(@cruiser.health).to eq(3)
 
       @cruiser.hit
       expect(@cruiser.health).to eq(2)
 
       @cruiser.hit
-      expect(@cruiser.health).to eq(1)
-
+      expect(@cruiser.health).to eq(1)  
+    
       end
     end
-  end
 end

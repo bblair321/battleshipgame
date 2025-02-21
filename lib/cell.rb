@@ -24,6 +24,12 @@ class Cell
     @ship.hit if @ship
   end
 
-
+  def render(reveal = false)
+    return "X" if @ship && @ship.sunk?
+    return "H" if @ship && @fired_upon
+    return "M" if @fired_upon
+    return "S" if @ship && reveal
+    "."
+  end
   
 end

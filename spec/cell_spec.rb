@@ -1,5 +1,6 @@
 require './lib/ship'
 require './lib/cell'
+
 RSpec.describe Cell do
   before(:each) do
     @cell = Cell.new("B4")
@@ -35,10 +36,13 @@ RSpec.describe Cell do
     it "is false" do
       expect(@cell.fired_upon?).to eq(false)
     end
+
   end
   describe "#fire_upon" do
    it "checks if ship was fired upon" do
       @cell.fire_upon
+
+      expect(@cruiser.hit).to eq(2)
       expect(@cell.fired_upon?).to eq(true)
     end
   end

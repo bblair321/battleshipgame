@@ -15,17 +15,20 @@ RSpec.describe Cell do
     it "has a ship" do
       expect(@cell.ship).to eq(nil)
     end
-    it "has an empty value" do
-      expect(@cell.empty).to eq(true)
-    end
   end
 
   describe "#place_ship" do
     it "adds ship" do
       @cell.place_ship(@cruiser)
-      expect(@cell.ship).to eq(@ship)
+      expect(@cell.ship).to eq(@cruiser)
     end
   end
   
+  describe "@empty?" do
+    it "changes the value of empty" do
+      @cell.place_ship(@cruiser)
+      expect(@cell.empty?).to eq(false)
+    end
+  end
   
 end

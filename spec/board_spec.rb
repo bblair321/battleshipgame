@@ -1,9 +1,12 @@
 require './lib/board'
 require './lib/cell'
+require './lib/ship'
 
 RSpec.describe Board do
   before(:each) do
     @board = Board.new
+    @cruiser = Ship.new("Cruiser", 3)
+    @submarine = Ship.new("Submarine", 2)
   end
   describe "#initialize" do
     it 'exists and starts with an empty hash' do
@@ -39,5 +42,12 @@ RSpec.describe Board do
       expect(@board.valid_coordinate?("E1")).to eq(false)
       expect(@board.valid_coordinate?("A22")).to eq(false)
     end
+  end
+
+  describe "#valid_placement" do
+  it 'returns false if the number of coordinates does not match ship length' do
+    expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to eq(false)
+    expect(@board.valid_placement?(@submarine, ["B1", "B2", "B3"])).to eq(false)
+  end
   end
 end

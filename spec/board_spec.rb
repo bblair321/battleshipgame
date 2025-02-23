@@ -17,7 +17,7 @@ RSpec.describe Board do
     it 'can generate cells when requested' do
       @board.generate_cells
 
-      expect(@board.cells.length).to eq(16)  #Now it``s filled
+      expect(@board.cells.length).to eq(16)  #Now it``s filled with all obj
       expect(@board.cells.keys).to include("A1", "D4")
       expect(@board.cells["A1"]).to be_a(Cell)
       expect(@board.cells["D4"]).to be_a(Cell)

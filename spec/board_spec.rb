@@ -23,4 +23,21 @@ RSpec.describe Board do
       expect(@board.cells["D4"]).to be_a(Cell)
     end
   end
+
+  describe "#valid_coordinate?" do
+    it 'can generate cells when requested' do
+      @board.generate_cells
+      @board.valid_coordinate?("A1")
+      @board.valid_coordinate?("D4")
+      @board.valid_coordinate?("A5")
+      @board.valid_coordinate?("E1")
+      @board.valid_coordinate?("A22")
+     
+      expect(@board.valid_coordinate?("A1")).to eq(true)
+      expect(@board.valid_coordinate?("D4")).to eq(true)
+      expect(@board.valid_coordinate?("A5")).to eq(false)
+      expect(@board.valid_coordinate?("E1")).to eq(false)
+      expect(@board.valid_coordinate?("A22")).to eq(false)
+    end
+  end
 end

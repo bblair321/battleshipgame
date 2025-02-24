@@ -55,10 +55,6 @@ class Board
     end
 
   end 
-end 
-
-
-  end
 
   def place(ship, coordinates)
     generate_cells
@@ -81,6 +77,5 @@ end
       board_display += row_display + "\n"
     end
     board_display.strip
-  end
- 
-end 
+  end 
+end

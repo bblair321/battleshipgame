@@ -47,7 +47,7 @@ class Board
     else
        false
     end
-     def 
+     #def 
   end 
 end 
 

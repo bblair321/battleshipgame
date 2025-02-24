@@ -6,29 +6,27 @@ RSpec.describe Ship do
   end
   describe 'initialize' do
     it 'can initialize' do
-      
-    expect(@cruiser).to be_an_instance_of(Ship)
+       expect(@cruiser).to be_an_instance_of(Ship)
     end
   end  
-  describe 'has attibutes' do
+
+  describe '#has attibutes' do
     it 'it has name' do
-      
-    expect(@cruiser.name).to eq("Cruiser")
+      expect(@cruiser.name).to eq("Cruiser")
     end
     it 'it has length' do
-      
-    expect(@cruiser.length).to eq(3)
+      expect(@cruiser.length).to eq(3)
     end
   end
+
   describe '#health' do  
-      it 'it has health' do
-        
+    it 'it has health' do   
       expect(@cruiser.health).to eq(3)
-   end  
+    end  
   end
 
   describe '#hit' do
-      it 'it has hit' do
+    it 'it has hit' do
       expect(@cruiser.health).to eq(3)
 
       @cruiser.hit
@@ -36,11 +34,11 @@ RSpec.describe Ship do
 
       @cruiser.hit
       expect(@cruiser.health).to eq(1)  
-    
-      end
     end
-    describe '#sunk' do
-      it 'it has sunk?' do
+  end
+
+  describe '#sunk' do
+    it 'it has sunk?' do
       expect(@cruiser.health).to eq(3)
 
       @cruiser.hit
@@ -51,6 +49,6 @@ RSpec.describe Ship do
       
       @cruiser.hit
       expect(@cruiser.sunk?).to eq true
-      end
     end
+  end
 end

@@ -36,8 +36,8 @@ RSpec.describe Cell do
     it "is false" do
       expect(@cell.fired_upon?).to eq(false)
     end
-
   end
+
   describe "#fire_upon" do
    it "checks if ship was fired upon" do
       @cell.fire_upon
@@ -54,6 +54,7 @@ RSpec.describe Cell do
       expect(@cell.render).to eq(".")
     end
   end 
+
   describe "#render" do
     it "checks how a cell can be rendered M" do
       @cell.fire_upon
@@ -61,6 +62,7 @@ RSpec.describe Cell do
       expect(@cell.render).to eq("M")
     end
   end 
+
   describe "#render" do
     it "checks how a cell can be rendered H" do
       @cell.place_ship(@cruiser)
@@ -69,10 +71,11 @@ RSpec.describe Cell do
       expect(@cell.render).to eq("H")
     end
   end 
+
   describe "#render" do
     it "renders 'X' when the ship is sunk" do
       @cell.place_ship(@cruiser)
-      3.times { @cruiser.hit } # Reduce ship health to 0
+      3.times { @cruiser.hit } # Reduces ship health to 0
       expect(@cell.render).to eq("X")
     end
   end 

@@ -65,7 +65,7 @@ class Board
       end
     end
   end
-end
+
 
   def place(ship, coordinates)
     if valid_placement?(ship, coordinates)

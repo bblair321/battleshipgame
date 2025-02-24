@@ -94,7 +94,3 @@ RSpec.describe Board do
     end
   end
 end
-
-    end
-  end
-end

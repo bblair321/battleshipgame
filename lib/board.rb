@@ -4,6 +4,7 @@ class Board
 
   def initialize
     @cells = {}
+
     generate_cells
   end
 
@@ -54,6 +55,17 @@ class Board
     end
     
   end
+
+
+  def place(ship, coordinates)
+    generate_cells
+    if valid_placement?(ship, coordinates)
+      coordinates.each do |coord|
+        @cells[coord].place_ship(ship)
+      end
+    end
+  end
+end
 
   def place(ship, coordinates)
     if valid_placement?(ship, coordinates)

@@ -53,9 +53,7 @@ class Board
     else
        false
     end
-    
   end
-
 
   def place(ship, coordinates)
     generate_cells
@@ -65,13 +63,19 @@ class Board
       end
     end
   end
-
-
-  def place(ship, coordinates)
-    if valid_placement?(ship, coordinates)
-      coordinates.each do |coord|
-        @cells[coord].place_ship(ship)
+ 
+  def render(reveal_ships = false)
+    board_display = "1 2 3 4 \n"
+    rows = ["A", "B", "C", "D"]
+    rows.each do |row|
+      row_display = "#{row} "
+      (1..4).each do |col|
+        cell_key = "#{row}#{col}"
+        row_display += "#{@cells[cell_key].render(reveal_ships)} "
       end
+      board_display += row_display + "\n"
     end
+    board_display.strip
   end
+ 
 end

@@ -2,7 +2,7 @@ class Board
   attr_reader :cells
 
   def initialize
-    @cells = {}  
+    @cells = {}
   end
 
   def generate_cells
@@ -49,8 +49,17 @@ class Board
        false
     end
     
-  end 
-end 
+  end
+
+  def place(ship, coordinates)
+    generate_cells
+    if valid_placement?(ship, coordinates)
+      coordinates.each do |coord|
+        @cells[coord].place_ship(ship)
+      end
+    end
+  end
+end
 
 
 

@@ -21,7 +21,9 @@ class Cell
   
   def fire_upon
     @fired_upon = true
-    @ship.hit if @ship
+    if @ship == !nil
+      @ship.hit 
+    end
   end
 
   def render(reveal = false)

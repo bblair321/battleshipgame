@@ -20,7 +20,6 @@ class Board
     end
   end
 
-
   def valid_coordinate?(coordinate)
     @cells.keys.include?(coordinate)
   end
@@ -28,6 +27,7 @@ class Board
   def valid_placement?(ship, coordinates)
     return false if coordinates.length != ship.length
     return false unless consecutive_coordinates?(coordinates)
+
     return false unless coordinates.all? { |coord| valid_coordinate?(coord) }
     return false if coordinates.any? { |coord| @cells[coord].ship }
     true  
@@ -53,6 +53,11 @@ class Board
     else
        false
     end
+
+  end 
+end 
+
+
   end
 
   def place(ship, coordinates)

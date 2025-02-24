@@ -43,7 +43,6 @@ RSpec.describe Board do
     end
   end
 
-
   describe "#valid_placement" do
     it 'returns false if the number of coordinates does not match ship length' do
       expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to eq(false)
@@ -51,8 +50,8 @@ RSpec.describe Board do
     end
     
     it 'returns true for the right placement' do
-      expect(@board.valid_placement?(@submarine, ["A1", "A2"])).to be true
-      expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to be true
+      expect(@board.valid_placement?(@submarine, ["A1", "A2"])).to eq(true)
+      expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to eq(true)
     end
 
     it 'returns true for consecutive placement' do 
@@ -81,6 +80,7 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@submarine, ["B1", "B2"])).to be true
     end
   end
+
   describe "#place" do
     it 'places the ship' do
       @board.place(@cruiser, ["A1", "A2", "A3"])
@@ -93,4 +93,70 @@ RSpec.describe Board do
 
     end
   end
+  describe "#render" do
+    it 'renders an empty board' do
+      expected_output = "1 2 3 4 \n" +
+                      "A . . . . \n" +
+                      "B . . . . \n" +
+                      "C . . . . \n" +
+                      "D . . . ."
+                    
+      expect(@board.render).to eq(expected_output)
+    end
+    it 'renders a board with ships hidden' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+  
+      expected_output =  "1 2 3 4 \n" +
+                        "A . . . . \n" +
+                        "B . . . . \n" +
+                        "C . . . . \n" +
+                        "D . . . ."
+  
+      expect(@board.render).to eq(expected_output)
+    end
+  
+    it 'renders a board with ships revealed' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+  
+      expected_output = "1 2 3 4 \n" +
+                        "A S S S . \n" +
+                        "B . . . . \n" +
+                        "C . . . . \n" +
+                        "D . . . ."
+  
+      expect(@board.render(true)).to eq(expected_output)
+    end
+  
+
+   it 'renders a board with hits and misses' do
+     @board.place(@cruiser, ["A1", "A2", "A3"])
+     @board.cells["A1"].fire_upon  
+     @board.cells["B3"].fire_upon  
+
+     expected_output = "1 2 3 4 \n" +
+                      "A H . . . \n" +
+                      "B . . M . \n" +
+                      "C . . . . \n" +
+                      "D . . . ."
+
+     expect(@board.render).to eq(expected_output)
+   end
+
+   it 'renders a board with a sunk ship' do
+     @board.place(@cruiser, ["A1", "A2", "A3"])
+     @board.cells["A1"].fire_upon
+     @board.cells["A2"].fire_upon
+     @board.cells["A3"].fire_upon  
+
+    expected_output = "1 2 3 4 \n" +
+                      "A X X X . \n" +
+                      "B . . . . \n" +
+                      "C . . . . \n" +
+                      "D . . . ."
+
+     expect(@board.render).to eq(expected_output)
+    end
+  end
+
+  
 end

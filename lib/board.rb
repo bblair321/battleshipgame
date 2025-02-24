@@ -78,4 +78,4 @@ class Board
     board_display.strip
   end
  
-end
+end 

@@ -1,8 +1,11 @@
+require './lib/cell'
 class Board
   attr_reader :cells
 
   def initialize
     @cells = {}
+
+    generate_cells
   end
 
   def generate_cells
@@ -25,6 +28,8 @@ class Board
   def valid_placement?(ship, coordinates)
     return false if coordinates.length != ship.length
     return false unless consecutive_coordinates?(coordinates)
+    return false unless coordinates.all? { |coord| valid_coordinate?(coord) }
+    return false if coordinates.any? { |coord| @cells[coord].ship }
     true  
   end
 
@@ -51,6 +56,7 @@ class Board
     
   end
 
+
   def place(ship, coordinates)
     generate_cells
     if valid_placement?(ship, coordinates)
@@ -61,5 +67,11 @@ class Board
   end
 end
 
-
-
+  def place(ship, coordinates)
+    if valid_placement?(ship, coordinates)
+      coordinates.each do |coord|
+        @cells[coord].place_ship(ship)
+      end
+    end
+  end
+end

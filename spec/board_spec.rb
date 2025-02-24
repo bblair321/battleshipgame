@@ -49,29 +49,27 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to eq(false)
       expect(@board.valid_placement?(@submarine, ["B1", "B2", "B3"])).to eq(false)
     end
-    it 'returns true for any placement' do
+    it 'returns true for the right placement' do
       expect(@board.valid_placement?(@submarine, ["A1", "A2"])).to be true
       expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to be true
     end
 
-    it 'returns true for horizontal placement' do 
+    it 'returns true for consecutive placement' do 
       expect(@board.valid_placement?(@cruiser, ["A1", "A2", "A3"])).to eq(true)
-    end
-
-    it 'returns true for vertical placement' do
+      expect(@board.valid_placement?(@cruiser, ["B1", "B2", "B3"])).to eq(true)
       expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to eq(true)
-    end
-
-    it 'returns false for diagonal placement' do
-      expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to eq(false)
     end
 
     it 'returns false for non-consecutive row placement' do
       expect(@board.valid_placement?(@cruiser, ["A1", "A3", "A4"])).to eq(false)
+      expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to eq(false)
+      expect(@board.valid_placement?(@cruiser, ["A3", "A3", "A4"])).to eq(false)
+      expect(@board.valid_placement?(@submarine, ["A1", "A4"])).to eq(false)
     end
     
-    it 'returns false for non-consecutive column placement' do
-      expect(@board.valid_placement?(@cruiser, ["A1", "C1"])).to eq(false)
+    it 'returns false for diagonal placement' do
+      expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to eq(false)
+      expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to eq(false)
     end
   end
 end

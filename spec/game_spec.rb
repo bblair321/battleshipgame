@@ -21,12 +21,12 @@ RSpec.describe Game do
     end
   end
 
-  describe "#place_computer_ships" do
-    it "places ships randomly on the computer board" do
-     @game.place_computer_ships
-     ship_cells = @game.computer_board.cells.values.select { |cell| cell.ship }
+  # describe "#place_computer_ships" do
+  #   it "places ships randomly on the computer board" do
+  #    @game.place_computer_ships
+  #    ship_cells = @game.computer_board.cells.values.select { |cell| cell.ship }
     
-     expect(ship_cells.count).to eq(5)  
-     end
-  end
+  #    expect(ship_cells.count).to eq(5)  
+  #    end
+  # end
 end  

@@ -12,8 +12,6 @@ RSpec.describe Board do
     it 'exists and starts with an empty hash' do
       expect(@board).to be_a(Board)
       expect(@board.cells).to be_a(Hash)
-
-      # expect(@board.cells.empty?).to eq(true)  
     end
   end
 

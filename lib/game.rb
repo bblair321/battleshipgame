@@ -41,8 +41,8 @@ class Game
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
 
-     place_random_ship(@computer_board, "Cruiser", 3)
-     place_random_ship(@computer_board, "Submarine", 2)
+     place_random_ship(@computer_board, cruiser)
+     place_random_ship(@computer_board, submarine)
 
      puts "Computer has placed its ships."
   end
@@ -76,5 +76,34 @@ class Game
     end
 
     coordinates if coordinates.all? { |coord| board.valid_coordinate?(coord) }
+  end
+  def place_player_ships
+    puts "You need to place your ships."
+    
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+    
+    place_player_ship(@player_board, cruiser)
+    
+    place_player_ship(@player_board, submarine)
+    
+    puts "Your ships are placed! Game is ready to begin."
+  end
+    
+  def place_player_ship(board, ship)
+      loop do
+      puts board.render(true)
+      puts "Enter the squares for the #{ship.name} (#{ship.length} spaces), separated by spaces:"
+      
+      coordinates = gets.chomp.upcase.split(" ")
+      
+      
+      if board.valid_placement?(ship, coordinates)
+        board.place(ship, coordinates)
+        break
+      else
+        puts "Those are invalid coordinates. Please try again."
+      end
+    end
   end
 end

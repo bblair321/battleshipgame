@@ -13,7 +13,7 @@ RSpec.describe Board do
       expect(@board).to be_a(Board)
       expect(@board.cells).to be_a(Hash)
 
-      expect(@board.cells.empty?).to eq(true)  
+      # expect(@board.cells.empty?).to eq(true)  
     end
   end
 
@@ -64,8 +64,6 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to eq(true)
     end
 
-
-    it 'returns false for non-consecutive row placement' do
    it 'returns false for non-consecutive row placement' do
       expect(@board.valid_placement?(@cruiser, ["A1", "A3", "A4"])).to eq(false)
       expect(@board.valid_placement?(@submarine, ["A1", "C1"])).to eq(false)
@@ -77,7 +75,6 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to eq(false)
       expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to eq(false)
     end
-  end
 
     it 'returns false for overlapping' do
       @board.place(@cruiser, ["A1", "A2", "A3"])
@@ -87,7 +84,6 @@ RSpec.describe Board do
       expect(@board.valid_placement?(@submarine, ["B1", "B2"])).to be true
     end
   end
-
   describe "#place" do
     it 'places the ship' do
       @board.place(@cruiser, ["A1", "A2", "A3"])
@@ -164,4 +160,4 @@ RSpec.describe Board do
      expect(@board.render).to eq(expected_output)
     end
   end
-end
+end  

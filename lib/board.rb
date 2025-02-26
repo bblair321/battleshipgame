@@ -27,9 +27,9 @@ class Board
   def valid_placement?(ship, coordinates)
     return false if coordinates.length != ship.length
     return false unless consecutive_coordinates?(coordinates)
-
     return false unless coordinates.all? { |coord| valid_coordinate?(coord) }
     return false if coordinates.any? { |coord| @cells[coord].ship }
+
     true  
   end
 
@@ -66,7 +66,7 @@ class Board
   end
  
   def render(reveal_ships = false)
-    board_display = "1 2 3 4 \n"
+    board_display = "  1 2 3 4 \n"
     rows = ["A", "B", "C", "D"]
     rows.each do |row|
       row_display = "#{row} "
@@ -74,7 +74,7 @@ class Board
         cell_key = "#{row}#{col}"
         row_display += "#{@cells[cell_key].render(reveal_ships)} "
       end
-      board_display += row_display + " \n"
+      board_display += row_display + "\n"
     end
     board_display
   end 

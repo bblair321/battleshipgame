@@ -137,4 +137,28 @@ class Game
     end
   end
 
+  def computer_turn
+    puts "Computer's turn..."
+    loop do
+      coordinate = @player_board.cells.keys.sample
+      unless @player_board.cells[coordinate].fired_upon?
+        @player_board.cells[coordinate].fire_upon
+        puts "Computer fired at #{coordinate}!"
+        puts @player_board.render(true)
+        break
+      end
+    end
+  end
+
+  def game_over?
+    if all_ships_sunk?(@computer_board)
+      puts "You win! All enemy ships have been sunk!"
+      return true
+    elsif all_ships_sunk?(@player_board)
+      puts "Computer wins! All your ships have been sunk."
+      return true
+    end
+    false
+  end
+
 end

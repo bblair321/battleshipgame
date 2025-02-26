@@ -106,4 +106,14 @@ class Game
       end
     end
   end
+
+  def turn_loop
+    loop do
+      player_turn
+      break if game_over?
+
+      computer_turn
+      break if game_over?
+    end
+  end
 end

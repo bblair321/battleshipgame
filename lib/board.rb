@@ -66,7 +66,7 @@ class Board
   end
  
   def render(reveal_ships = false)
-    board_display = "1 2 3 4 \n"
+    board_display = "--1 2 3 4\n"
     rows = ["A", "B", "C", "D"]
     rows.each do |row|
       row_display = "#{row} "

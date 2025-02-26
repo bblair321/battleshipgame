@@ -57,7 +57,7 @@ class Board
   end 
 
   def place(ship, coordinates)
-    generate_cells
+    puts "Placing #{ship.name} on #{coordinates}"
     if valid_placement?(ship, coordinates)
       coordinates.each do |coord|
         @cells[coord].place_ship(ship)

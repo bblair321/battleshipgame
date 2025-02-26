@@ -161,4 +161,7 @@ class Game
     false
   end
 
+  def all_ships_sunk?(board)
+    board.cells.values.all? { |cell| cell.ship.nil? || cell.ship.sunk? }
+  end
 end

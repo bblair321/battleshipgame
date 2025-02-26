@@ -164,6 +164,14 @@ class Game
   end
 
   def all_ships_sunk?(board)
-    board.cells.values.all? { |cell| cell.ship.nil? || cell.ship.sunk? }
+    # Gets a list of all unique ships currently on the board
+    ships = board.cells.values.map(&:ship).compact.uniq
+
+    puts "Checking if all ships are sunk..."
+    ships.each { |ship| puts "#{ship.name}: #{ship.sunk? ? 'SUNK' : 'ALIVE'} (Health: #{ship.health})" }
+
+    return false if ships.empty?
+
+    ships.all?(&:sunk?)
   end
 end

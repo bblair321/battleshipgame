@@ -33,6 +33,8 @@ class Game
     place_player_ships
 
     puts "Game setup complete. Let's start!"
+
+    turn_loop
   end
 
   def place_computer_ships

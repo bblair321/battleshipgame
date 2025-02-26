@@ -116,4 +116,25 @@ class Game
       break if game_over?
     end
   end
+
+  def player_turn
+    puts "Your turn!"
+    puts "Here is your opponent’s board:"
+    puts @computer_board.render
+
+    loop do
+      puts "Enter a coordinate to fire at:"
+      coordinate = gets.chomp.upcase
+
+      if @computer_board.valid_coordinate?(coordinate) && !@computer_board.cells[coordinate].fired_upon?
+        @computer_board.cells[coordinate].fire_upon
+        puts "You fired at #{coordinate}!"
+        puts @computer_board.render
+        break
+      else
+        puts "Invalid coordinate or already fired upon. Try again."
+      end
+    end
+  end
+
 end

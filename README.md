@@ -8,4 +8,4 @@
     We were both live everytime we had a working session. We took turns switching from partner A to partner B.
 
 4. Describe how feedback was shared over the course of this project.
-    Since we only worked during live sessions we offered echother feedback as we were going through the tasks. Whomever was in the the navigater possition was giving the driver feeback as the driver was working the code.
+    Since we only worked during live sessions we offered echother feedback as we were going through the tasks. Whomever was in the the navigater possition was giving the driver feeback as the driver was working the code.# battleshipgameruby
